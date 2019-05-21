@@ -1,9 +1,10 @@
 import os
 
-from flask import Flask, session, render_template
+from flask import Flask, session, render_template, request, redirect, flash, url_for
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
+from helpers import apology, login_required
 
 app = Flask(__name__)
 
@@ -25,5 +26,27 @@ db = scoped_session(sessionmaker(bind=engine))
 
 
 @app.route("/")
+@login_required
 def index():
     return render_template("index.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+
+    return render_template("login.html")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    """Register user"""
+    if request.method == "POST":
+        # verify a username was inputted
+        if not request.form.get("username"):
+            return apology("HAHAHA INPUT YOUR USERNAME")
+        elif not request.form.get("password"):
+            return apology("WHAT'S YOUR PASSWORD")
+        elif not request.form.get("password") == request.form.get("confirmation"):
+            return apology("Password must match, try again")
+        flash("registered")
+        return render_template("index.html")
+    else:    
+        return render_template("register.html")

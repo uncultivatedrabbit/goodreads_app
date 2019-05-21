@@ -1,7 +1,13 @@
+/* global */
+body{
+    background: #b2bec3;
+}
+
+
 nav .navbar-brand
 {
     /* size for brand */
-    font-size: xx-large;
+    font-size: large;
 }
 
 /* colors for brand */
@@ -44,4 +50,24 @@ main img
 {
     /* constrain images on small screens */
     max-width: 100%;
+}
+
+.container .registration{
+    background:#636e72;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 550px;
+    color: #dfe6e9;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.4), 0 16px 20px 0 rgba(0, 0, 0, 0.39);
+    border-radius: 1em;
+}
+
+.container .login{
+    background:#636e72;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 550px;
+    color: #dfe6e9;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.4), 0 16px 20px 0 rgba(0, 0, 0, 0.39);
+    border-radius: 1em;
 }

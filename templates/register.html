@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block heading %}Registration{% endblock%}
+
+{% block main %}
+
+  <div class="container registration">
+    <h1>Make an Account with Us!</h1>
+    <br>
+
+  
+  
+      <form action="/register" method="post" onsubmit="verifyPassword(this)">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+            <span id="username-verify"> </span>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password"  placeholder="Password" type="password"/>
+            <span id="password-verify"> </span>
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="confirmation" id="confirmation" placeholder="Password (again)" type="password"/>
+            <span id="pass-verify"> </span>
+            <span id="confirm-verify"> </span>
+        </div>
+        <button class="btn btn-dark btn-lg" id="reg-button" type="submit">Register</button>
+      </form>
+      
+  </div>
+
+{% endblock %}
