@@ -1,7 +1,4 @@
 // front end password verification
-
-
-
 function verifyPassword(form){
   username = form.username.value;
   passwordOne = form.password.value;
@@ -64,4 +61,10 @@ function verifyPassword(form){
     return true;
   }
   
+}
+
+setTimeout(fade_out, 5000);
+
+function fade_out() {
+  $("#registered").fadeOut().remove();
 }

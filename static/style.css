@@ -2,8 +2,10 @@
 body{
     background: #b2bec3;
 }
-
-
+/* #page-container{
+    position: relative;
+    min-height: 100 vh;
+} */
 nav .navbar-brand
 {
     /* size for brand */
@@ -71,3 +73,29 @@ main img
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.4), 0 16px 20px 0 rgba(0, 0, 0, 0.39);
     border-radius: 1em;
 }
+
+.container.search{
+    background:#636e72;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    width: 550px;
+    color: #dfe6e9;
+    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.4), 0 16px 20px 0 rgba(0, 0, 0, 0.39);
+    border-radius: 1em;
+
+}
+
+.text-muted{
+    color:#dfe6e9!important;
+}
+
+.footer{
+    background-color: #343a40;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    box-shadow: 0 -9px 18px 4px #dfe6e9;
+}
+
