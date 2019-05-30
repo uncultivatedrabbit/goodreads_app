@@ -99,4 +99,8 @@ def register():
         return redirect("/login")
     else:    
         return render_template("register.html")
-    
+
+@app.route("/search", methods=(["GET"]))
+@login_required
+def search():
+    return render_template("results.html", books=books)   

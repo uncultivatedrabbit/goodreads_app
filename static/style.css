@@ -54,6 +54,8 @@ main img
     max-width: 100%;
 }
 
+
+/* for login/registration pages */
 .container .registration{
     background:#636e72;
     padding-top: 15px;
