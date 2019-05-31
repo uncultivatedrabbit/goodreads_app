@@ -47,13 +47,16 @@ def login():
         elif not request.form.get("password"):
             return apology("please provide a password")
         #get user information from database    
-        rows= db.execute("SELECT * FROM users WHERE username = username", {"username": username})
+        rows= db.execute("SELECT * FROM users WHERE username = :username", {"username": username})
 
         data = rows.fetchone()
 
-        #verify the username and password are good to go
+        #verify the  password is good to go
         if data == None or not check_password_hash(data[2], request.form.get("password")):
             return apology("Invalid username or password")
+        if request.form.get("username") != data[1]:
+            return apology("Username does not match")
+
         
         session["user_id"] = data[0]
         session["user_name"] = data[1]
@@ -67,6 +70,7 @@ def login():
     
 @app.route("/logout")
 def logout():
+    """ Log User Out """
     session.clear()
     return render_template("logout.html")
 
@@ -76,31 +80,71 @@ def logout():
 def register():
     session.clear()
     """Register user"""
+    username = request.form.get("username")
     if request.method == "POST":
+
         # verify a username was inputted
         if not request.form.get("username"):
             return apology("HAHAHA INPUT YOUR USERNAME")
+
+        #Check database for existing username
+        checkUser = db.execute("SELECT * FROM users WHERE username = :username", 
+        {"username": request.form.get("username")}).fetchone()
+
+        if checkUser:
+            return apology("That username already exists")
+
         # verify a password was inputted
         elif not request.form.get("password"):
             return apology("WHAT'S YOUR PASSWORD")
         # verify the passwords match
         elif not request.form.get("password") == request.form.get("confirmation"):
             return apology("Password must match, try again")
-        flash("registered")
-        username = request.form.get("username")
+       
         password = request.form.get("password")
 
         # inserts new user and password into the database
-        db.execute("INSERT INTO users (username, password) VALUES(:username, :password)", {"username": username, "password": generate_password_hash(password)})
+        db.execute("INSERT INTO users (username, password) VALUES(:username, :password)", 
+        {"username": username, "password": generate_password_hash(password)})
         db.commit();
         
-        flash('Account created', 'info')
+        
 
         return redirect("/login")
     else:    
         return render_template("register.html")
 
-@app.route("/search", methods=(["GET"]))
+@app.route("/search", methods=["GET"])
 @login_required
 def search():
-    return render_template("results.html", books=books)   
+    """Search Through Book Database"""
+    # if they don't enter any search parameters
+    if not request.args.get("book"):
+        return apology("Please enter a book")
+
+    # set up query to include anything similar to what they typed in using wildcards
+    searched = "%" + request.args.get("book") + "%"
+    #to uppercase 
+    searched=searched.title()
+
+    #query database for specific searched book
+    rows = db.execute("SELECT isbn,title,author,year FROM books WHERE isbn LIKE :searched OR title LIKE :searched OR author LIKE :searched OR year LIKE :searched", {"searched": searched})
+
+    #if the book isn't in the database of books return apology
+    if rows.rowcount == 0:
+        return apology("This book is not in our database, sorry!")
+    #return all the books that match
+    books = rows.fetchall()
+
+    return render_template("results.html", books=books)
+
+
+@app.route("/book/<isbn>", methods=["GET", "POST"])
+@login_required
+def book():
+    if request.method=="POST":
+
+
+
+
+        return render_template("book.html")

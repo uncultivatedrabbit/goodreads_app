@@ -7,12 +7,14 @@
   <div class="container login">
      
       <h2>Please Sign In:</h2>
-      <form action="/login" method="post">
+      <form action="/login" method="post" onsubmit="checkPassword(this)">
         <div class="form-group">
             <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
+            <span id="u-verify"> </span>
         </div>
         <div class="form-group">
             <input class="form-control" name="password" placeholder="Password" type="password"/>
+            <span id="p-verify"> </span>
         </div>
         <button class="btn btn-dark btn-lg" type="submit">Log In</button>
       </form>

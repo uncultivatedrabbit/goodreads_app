@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %} Results {% endblock %}
+
+{% block main %}
+
+<table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th scope='col'>#</th>
+        <th scope="col">Author</th>
+        <th scope="col">Book Title</th>
+        <th scope="col">Year</th>
+        <th scope="col">Read More</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+        {% for book in books %}
+      <tr>
+          
+        <th scope='row'>{{ loop.index }} </th>
+        <td>{{book['author']}}</td>
+        <td>{{book['title']}}</td>
+        <td>{{book['year']}}</td>
+        <td><a href="/book/{{book['isbn']}}">Go!</a></td>
+        
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+    
+  </table>
+ 
+
+
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}

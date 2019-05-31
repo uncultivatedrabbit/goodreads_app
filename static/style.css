@@ -1,11 +1,26 @@
 /* global */
 body{
     background: #b2bec3;
+    height:100%;
 }
-/* #page-container{
+#page-container{
     position: relative;
-    min-height: 100 vh;
-} */
+    min-height: 100vh;
+    
+}
+#content-wrap{
+    padding-bottom: 2.5rem;
+}
+
+a{
+    text-decoration: none;
+    color: #dfe6e9;
+
+}
+a:hover{
+    color: #dfe6e9;
+    text-decoration: underline;
+}
 nav .navbar-brand
 {
     /* size for brand */
@@ -95,9 +110,9 @@ main img
     background-color: #343a40;
     position: absolute;
     bottom: 0;
+    display:none;
     width: 100%;
-    padding-bottom: 15px;
-    padding-top: 15px;
+    height: 0;
     box-shadow: 0 -9px 18px 4px #dfe6e9;
 }
 
