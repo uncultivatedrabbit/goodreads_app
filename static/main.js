@@ -1,11 +1,10 @@
 // front end password verification for registration
 function verifyPassword(form){
 
-  
   username = form.username.value;
   passwordOne = form.password.value;
+  passwordTwo = form.confirmation.value;
  
-
   // verify the user inputted a username
   if (!username){
     let alert = document.createElement("div");
@@ -65,6 +64,8 @@ function verifyPassword(form){
   
 }
 
+
+// login page version of client side username / password check
 function checkPassword(form){
   username = form.username.value;
   password = form.password.value;
@@ -96,8 +97,6 @@ function checkPassword(form){
     event.preventDefault();
     return false;
   } 
-  
- 
   
 }
 

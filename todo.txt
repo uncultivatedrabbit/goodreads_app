@@ -1,5 +1,0 @@
-Complete the database design, and adding support registration, login, and logout February 22.
-
-Complete the import script, and build the search page and book page by February 27.
-
-Support submitting reviews, getting Goodreads review data, and API access by March 4.
